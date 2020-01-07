@@ -1,4 +1,5 @@
-﻿using MyTrashCollector.Models;
+﻿using Microsoft.AspNet.Identity;
+using MyTrashCollector.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,20 @@ using System.Web.Mvc;
 
 namespace MyTrashCollector.Controllers
 {
+    
     public class CustomerController : Controller
     {
+        ApplicationDbContext context;
+
+        public CustomerController()
+        {
+            context = new ApplicationDbContext();
+        }
         // GET: Customer
         public ActionResult Index()
         {
+
+            //Customer customer = 
             return View();
         }
 
@@ -24,6 +34,7 @@ namespace MyTrashCollector.Controllers
         // GET: Customer/Create
         public ActionResult Create()
         {
+
             Customer customer = new Customer();
             return View(customer);
         }
@@ -34,7 +45,11 @@ namespace MyTrashCollector.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                string userId = User.Identity.GetUserId();
+                customer.ApplicationId = userId;
+
+                context.Customers.Add(customer);
+                context.SaveChanges();
 
                 return RedirectToAction("Index");
             }

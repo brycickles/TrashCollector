@@ -1,4 +1,5 @@
-﻿using MyTrashCollector.Models;
+﻿using Microsoft.AspNet.Identity;
+using MyTrashCollector.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace MyTrashCollector.Controllers
 {
     public class EmployeeController : Controller
     {
+        ApplicationDbContext context;
+        public EmployeeController()
+        {
+            context = new ApplicationDbContext();
+        }
         // GET: Employee
         public ActionResult Index()
         {
@@ -34,7 +40,11 @@ namespace MyTrashCollector.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                string userId = User.Identity.GetUserId();
+                employee.ApplicationId = userId;
+
+                context.Employees.Add(employee);
+                context.SaveChanges(); 
 
                 return RedirectToAction("Index");
             }
