@@ -24,7 +24,8 @@ namespace MyTrashCollector.Controllers
                 employee = context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault(); 
             }
             string currentDay = DateTime.Now.DayOfWeek.ToString();
-            var customersInEmployeeZip = context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == currentDay).ToList();
+            string todaysDate = DateTime.Now.ToShortDateString();
+            var customersInEmployeeZip = context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == currentDay || c.Zip == employee.Zip && c.ExtraPickupDate == todaysDate).ToList();
             return View(customersInEmployeeZip);
         }
 
