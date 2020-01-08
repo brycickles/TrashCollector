@@ -82,6 +82,15 @@ namespace MyTrashCollector.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+                //case SignInStatus.Success:
+                //    if (User.IsInRole("Employee") == true)
+                //    {
+                //        return RedirectToAction("Index", "Employee", model);
+                //    }
+                //    else //user is a customer
+                //    {
+                //        return RedirectToAction("Index", "Customer", model);
+                //    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

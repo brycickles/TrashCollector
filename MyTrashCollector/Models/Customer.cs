@@ -25,6 +25,7 @@ namespace MyTrashCollector.Models
         public string State { get; set; }
         public string Zip { get; set; }
         public double Balance { get; set; }
+        public string PickupDay { get; set; }
         public string SuspendStart { get; set; }
         public string SuspendEnd { get; set; }
         public string ExtraPickupDate { get; set; }

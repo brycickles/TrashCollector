@@ -104,3 +104,4 @@ C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashC
 C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.pdb
 C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.Migrations.InitialMigration.resources
 C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.csproj.GenerateResource.cache
+C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.Migrations.AddedPickupDayToCustomerModel.resources

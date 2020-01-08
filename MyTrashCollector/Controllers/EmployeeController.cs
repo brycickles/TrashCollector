@@ -16,9 +16,16 @@ namespace MyTrashCollector.Controllers
             context = new ApplicationDbContext();
         }
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(Employee employee)
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            if(employee.Zip == null)
+            {
+                employee = context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault(); 
+            }
+            string currentDay = DateTime.Now.DayOfWeek.ToString();
+            var customersInEmployeeZip = context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == currentDay).ToList();
+            return View(customersInEmployeeZip);
         }
 
         // GET: Employee/Details/5

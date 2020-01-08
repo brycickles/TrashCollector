@@ -181,6 +181,10 @@
     <Compile Include="Migrations\202001071340392_InitialMigration.Designer.cs">
       <DependentUpon>202001071340392_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001081704215_AddedPickupDayToCustomerModel.cs" />
+    <Compile Include="Migrations\202001081704215_AddedPickupDayToCustomerModel.Designer.cs">
+      <DependentUpon>202001081704215_AddedPickupDayToCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -252,6 +256,7 @@
     <Content Include="Views\Role\View.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,6 +277,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001071340392_InitialMigration.resx">
       <DependentUpon>202001071340392_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001081704215_AddedPickupDayToCustomerModel.resx">
+      <DependentUpon>202001081704215_AddedPickupDayToCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

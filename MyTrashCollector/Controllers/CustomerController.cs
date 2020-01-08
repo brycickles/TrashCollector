@@ -18,17 +18,15 @@ namespace MyTrashCollector.Controllers
             context = new ApplicationDbContext();
         }
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index(Customer customer)
         {
-
-            //Customer customer = 
-            return View();
+            return View(customer);
         }
 
         // GET: Customer/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Customer customer)
         {
-            return View();
+            return View(customer);
         }
 
         // GET: Customer/Create
