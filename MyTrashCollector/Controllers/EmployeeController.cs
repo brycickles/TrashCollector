@@ -35,6 +35,14 @@ namespace MyTrashCollector.Controllers
             return View();
         }
 
+        public ActionResult Confirm(int id)
+        {
+            var confirmedPickup = context.Customers.Where(c => c.Id == id).FirstOrDefault();
+            confirmedPickup.isPickedUp = true;
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "Employee");
+        }
         // GET: Employee/Create
         public ActionResult Create()
         {

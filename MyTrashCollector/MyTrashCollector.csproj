@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202001081704215_AddedPickupDayToCustomerModel.Designer.cs">
       <DependentUpon>202001081704215_AddedPickupDayToCustomerModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001081952132_AddedBooleanPickedUpConfirmation.cs" />
+    <Compile Include="Migrations\202001081952132_AddedBooleanPickedUpConfirmation.Designer.cs">
+      <DependentUpon>202001081952132_AddedBooleanPickedUpConfirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -280,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001081704215_AddedPickupDayToCustomerModel.resx">
       <DependentUpon>202001081704215_AddedPickupDayToCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001081952132_AddedBooleanPickedUpConfirmation.resx">
+      <DependentUpon>202001081952132_AddedBooleanPickedUpConfirmation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
