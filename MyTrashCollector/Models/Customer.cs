@@ -30,5 +30,6 @@ namespace MyTrashCollector.Models
         public string SuspendEnd { get; set; }
         public string ExtraPickupDate { get; set; }
         public bool isPickedUp { get; set; }
+
     }
 }

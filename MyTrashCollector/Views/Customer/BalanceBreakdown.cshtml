@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MyTrashCollector.Models.Customer>
+@{
+    ViewBag.Title = "BalanceBreakdown";
+}
+
+<h2>Itemized Balance Breakdown</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <h2>Dates trash was collected in @ViewBag.CurrentMonth</h2>
+        </th>
+    </tr>
+
+    @foreach (var d in ViewBag.DatesRange)
+    {
+        <tr>
+            <td>
+                <ul>
+                    @d.ToString();
+                </ul>
+            </td>
+        </tr>
+    }
+
+
+
+
+
+
+
+</table>
+

@@ -134,5 +134,37 @@ namespace MyTrashCollector.Controllers
                 return View();
             }
         }
+
+        public ActionResult BalanceBreakdown(Customer customer)
+        {
+            var userId = User.Identity.GetUserId();
+
+
+            int year = DateTime.Now.Year;
+            int currentMonth = DateTime.Now.Month;            
+            if (customer.ApplicationId == null)
+            {
+                customer = context.Customers.Where(c => c.ApplicationId == userId).FirstOrDefault();
+            }
+            string dayOfWeek = customer.PickupDay;
+
+
+            //use year, current month, day of week to pass through GetDates function to have dates list return all instances of pickup day in month 
+            List<DateTime> datesRange = GetDates(year, currentMonth, dayOfWeek);  //this is a list of every pickup day with accompanying date that occurred in the current month for customer to see itemized reciept of in balance
+           
+            //TODO - make a string representation of the current month and store it in a viewbag
+            ViewBag.DatesRange = datesRange;
+
+            return View();
+        }
+
+        public static List<DateTime> GetDates(int year, int month, string day)
+        {
+            return Enumerable.Range(1, DateTime.DaysInMonth(year, month))
+                 .Where(d => new DateTime(year, month, d).ToString("dddd").Equals(day))
+                .Select(d => new DateTime(year, month, d)).ToList();
+        }
     }
+
+    
 }

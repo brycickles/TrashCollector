@@ -74,7 +74,8 @@
         @Html.DisplayFor(modelItem => item.PickupDay)
     </td>
     <td>
-        @Html.ActionLink("Edit Weekly Pickup Day", "EditPickupDay", new { id = item.Id }) |
+        @Html.ActionLink("Edit Weekly Pickup Day", "EditPickupDay", new { id = item.Id }) 
+        <br />
         @Html.ActionLink("Edit Suspend Dates", "EditSuspendDates", new { id = item.Id })         
     </td>
 </tr>
@@ -93,7 +94,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Balance)
             </td>
+            <td>
+                @Html.ActionLink("Balance Breakdown", "BalanceBreakdown", new { id = item.Id })
+            </td>
         }
-    </tr>
-    
-    </table>
+
+    </tr>    
+</table>

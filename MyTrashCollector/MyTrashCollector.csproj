@@ -263,6 +263,7 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\PickupDateChanger.cshtml" />
     <Content Include="Views\Customer\SuspendDatesChanger.cshtml" />
+    <Content Include="Views\Customer\BalanceBreakdown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

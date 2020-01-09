@@ -18,13 +18,16 @@ namespace MyTrashCollector.Controllers
         // GET: Employee
         public ActionResult Index(Employee employee)
         {
+            Customer customer = new Customer();
             var userId = User.Identity.GetUserId();
             if(employee.Zip == null)
             {
                 employee = context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault(); 
             }
+
             string currentDay = DateTime.Now.DayOfWeek.ToString();
             string todaysDate = DateTime.Now.ToShortDateString();
+
             var customersInEmployeeZip = context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == currentDay || c.Zip == employee.Zip && c.ExtraPickupDate == todaysDate).ToList();
             return View(customersInEmployeeZip);
         }
@@ -122,5 +125,6 @@ namespace MyTrashCollector.Controllers
                 return View();
             }
         }
+        
     }
 }
