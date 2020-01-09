@@ -26,7 +26,13 @@ namespace MyTrashCollector.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(Customer customer)
         {
-            return View(customer);
+            var userId = User.Identity.GetUserId();
+            if (customer.ApplicationId == null)
+            {
+                customer = context.Customers.Where(c => c.ApplicationId == userId).FirstOrDefault();
+            }
+            var customers = context.Customers.Where(c => c.ApplicationId == customer.ApplicationId).ToList();
+            return View(customers);
         }
 
         // GET: Customer/Create
@@ -79,6 +85,34 @@ namespace MyTrashCollector.Controllers
             }
         }
 
+        public ActionResult EditPickupDay(int id)
+        {             
+            return View("PickupDateChanger");            
+        }
+
+        [HttpPost]
+        public ActionResult EditPickupDay(int id, Customer customer) {
+            var customerToBeChanged = context.Customers.Where(c => c.Id == id).FirstOrDefault();
+            customerToBeChanged.PickupDay = customer.PickupDay;
+            context.SaveChanges();
+            return RedirectToAction("Details");
+        }
+        public ActionResult EditSuspendDates(int id)
+        {
+
+            return View("SuspendDatesChanger");
+            //TODO: create a view called SuspendDatesChanger
+        }
+
+        [HttpPost]
+        public ActionResult EditSuspendDates(int id, Customer customer)
+        {
+            var customerToBeChanged = context.Customers.Where(c => c.Id == id).FirstOrDefault();
+            customerToBeChanged.SuspendStart = customer.SuspendStart;
+            customerToBeChanged.SuspendEnd = customer.SuspendEnd;
+            context.SaveChanges();
+            return RedirectToAction("Details");
+        }
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {

@@ -261,6 +261,8 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\PickupDateChanger.cshtml" />
+    <Content Include="Views\Customer\SuspendDatesChanger.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -39,6 +39,15 @@ namespace MyTrashCollector.Controllers
         {
             var confirmedPickup = context.Customers.Where(c => c.Id == id).FirstOrDefault();
             confirmedPickup.isPickedUp = true;
+            if(confirmedPickup.ExtraPickupDate == DateTime.Now.ToShortDateString()) //if today is their extra pickup, charge a special fee
+            {
+                confirmedPickup.Balance += 10;
+            }
+            else //otherwise, this is their normal charge
+            {
+                confirmedPickup.Balance += 1.50;
+            }
+            
             context.SaveChanges();
 
             return RedirectToAction("Index", "Employee");

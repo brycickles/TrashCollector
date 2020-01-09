@@ -1,19 +1,13 @@
 ﻿@model IEnumerable<MyTrashCollector.Models.Customer>
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Customer Details";
 }
 
 <h2>Customer Details Page</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -33,9 +27,6 @@
             @Html.DisplayNameFor(model => model.Zip)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Balance)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.SuspendStart)
         </th>
         <th>
@@ -52,9 +43,6 @@
 
 @foreach (var item in Model) {
 <tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ApplicationId)
-    </td>
     <td>
         @Html.DisplayFor(modelItem => item.FirstName)
     </td>
@@ -74,9 +62,6 @@
         @Html.DisplayFor(modelItem => item.Zip)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Balance)
-    </td>
-    <td>
         @Html.DisplayFor(modelItem => item.SuspendStart)
     </td>
     <td>
@@ -89,11 +74,26 @@
         @Html.DisplayFor(modelItem => item.PickupDay)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        @Html.ActionLink("Edit Weekly Pickup Day", "EditPickupDay", new { id = item.Id }) |
+        @Html.ActionLink("Edit Suspend Dates", "EditSuspendDates", new { id = item.Id })         
     </td>
 </tr>
 }
 
 </table>
+
+<h2>Customer Balance</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        @foreach (var item in Model)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+        }
+    </tr>
+    
+    </table>
