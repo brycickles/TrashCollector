@@ -106,3 +106,4 @@ C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashC
 C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.csproj.GenerateResource.cache
 C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.Migrations.AddedPickupDayToCustomerModel.resources
 C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.Migrations.AddedBooleanPickedUpConfirmation.resources
+C:\Users\bryce\source\repos\MyTrashCollector\MyTrashCollector\obj\Debug\MyTrashCollector.Migrations.AddedExtraPickupDateMonthPropertyToCustomer.resources

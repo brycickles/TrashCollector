@@ -11,23 +11,28 @@
             <h2>Dates trash was collected in @ViewBag.CurrentMonth</h2>
         </th>
     </tr>
-
     @foreach (var d in ViewBag.DatesRange)
     {
+        //in here, run an additional if that checks if d.toString formatted belongs in range of suspension dates 
         <tr>
             <td>
                 <ul>
-                    @d.ToString();
+                    <h3>Regular pickup:</h3> @d.ToString() - $1.50
                 </ul>
             </td>
         </tr>
     }
+    <h1>Total Monthly Charge - $@String.Format("{0:0.00}", ViewBag.TotalSum)</h1>
 
-
-
-
-
-
-
+    <tr>
+        <th>
+            <ul>
+                @if (ViewBag.ExtraPickupDateApplied == true)
+                {
+                    <h3>Extra Pickup Charge: $10</h3>
+                    @ViewBag.ExtraPickupDate
+                }
+            </ul>
+        </th>
+    </tr>
 </table>
-

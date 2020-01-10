@@ -151,10 +151,120 @@ namespace MyTrashCollector.Controllers
 
             //use year, current month, day of week to pass through GetDates function to have dates list return all instances of pickup day in month 
             List<DateTime> datesRange = GetDates(year, currentMonth, dayOfWeek);  //this is a list of every pickup day with accompanying date that occurred in the current month for customer to see itemized reciept of in balance
-           
-            //TODO - make a string representation of the current month and store it in a viewbag
-            ViewBag.DatesRange = datesRange;
 
+            double count = datesRange.Count;
+            string stringCurrentMonth = "";
+            switch (currentMonth)
+            {
+                case 1:
+                    stringCurrentMonth = "January";                   
+                    break;
+                case 2:
+                    stringCurrentMonth = "February";
+                    break;
+                case 3:
+                    stringCurrentMonth = "March";
+                    break;
+                case 4:
+                    stringCurrentMonth = "April";
+                    break;
+                case 5:
+                    stringCurrentMonth = "May";
+                    break;
+                case 6:
+                    stringCurrentMonth = "June";
+                    break;
+                case 7:
+                    stringCurrentMonth = "July";
+                    break;
+                case 8:
+                    stringCurrentMonth = "August";
+                    break;
+                case 9:
+                    stringCurrentMonth = "September";
+                    break;
+                case 10:
+                    stringCurrentMonth = "October";
+                    break;
+                case 11:
+                    stringCurrentMonth = "November";
+                    break;
+                case 12:
+                    stringCurrentMonth = "December";
+                    break;
+            }
+
+            string extraPickupDateTwoDigits = customer.ExtraPickupDate.Substring(0, 2);
+            if(extraPickupDateTwoDigits == "01")
+            {
+                ViewBag.ExtraPickupDateMonth = "January";
+            } else if (extraPickupDateTwoDigits == "02")
+            {
+                ViewBag.ExtraPickupDateMonth = "February";
+            }
+            else if (extraPickupDateTwoDigits == "03")
+            {
+                ViewBag.ExtraPickupDateMonth = "March";
+            }
+            else if (extraPickupDateTwoDigits == "04")
+            {
+                ViewBag.ExtraPickupDateMonth = "April";
+            }
+            else if (extraPickupDateTwoDigits == "05")
+            {
+                ViewBag.ExtraPickupDateMonth = "May";
+            }
+            else if (extraPickupDateTwoDigits == "06")
+            {
+                ViewBag.ExtraPickupDateMonth = "June";
+            }
+            else if (extraPickupDateTwoDigits == "07")
+            {
+                ViewBag.ExtraPickupDateMonth = "July";
+            }
+            else if (extraPickupDateTwoDigits == "08")
+            {
+                ViewBag.ExtraPickupDateMonth = "August";
+            }
+            else if (extraPickupDateTwoDigits == "09")
+            {
+                ViewBag.ExtraPickupDateMonth = "September";
+            }
+            else if (extraPickupDateTwoDigits == "10")
+            {
+                ViewBag.ExtraPickupDateMonth = "October";
+            }
+            else if (extraPickupDateTwoDigits == "11")
+            {
+                ViewBag.ExtraPickupDateMonth = "November";
+            }
+            else if (extraPickupDateTwoDigits == "12")
+            {
+                ViewBag.ExtraPickupDateMonth = "December";
+            }
+
+            bool extraPickupDateFallsInCurrentMonth;
+            string twoDigitCurrentMonth = DateTime.Now.Month.ToString("d2");
+            if (extraPickupDateTwoDigits == twoDigitCurrentMonth)
+            {
+                ViewBag.TotalSum = (count * 1.5) + 10; //if its the month of an extra pickup, apply the extra pickup charge
+                extraPickupDateFallsInCurrentMonth = true;
+            } else
+            {
+                ViewBag.TotalSum = count * 1.5;
+                extraPickupDateFallsInCurrentMonth = false; 
+            }
+
+
+
+
+            ViewBag.ExtraPickupDate = customer.ExtraPickupDate;
+            ViewBag.ExtraPickupDateApplied = extraPickupDateFallsInCurrentMonth;
+            ViewBag.DatesRange = datesRange;
+            ViewBag.CurrentMonth = stringCurrentMonth;
+
+            //TODO UNFUCK
+            //ViewBag.ExtraPcikupDateMonth = customer.ExtraPickupDate; //TODO - fix this. Make it display a formatted month only
             return View();
         }
 

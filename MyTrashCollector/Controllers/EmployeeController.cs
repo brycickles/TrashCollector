@@ -26,9 +26,10 @@ namespace MyTrashCollector.Controllers
             }
 
             string currentDay = DateTime.Now.DayOfWeek.ToString();
-            string todaysDate = DateTime.Now.ToShortDateString();
+            string todaysDate = DateTime.Now.ToString("MM/dd/yyyy");
 
             var customersInEmployeeZip = context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == currentDay || c.Zip == employee.Zip && c.ExtraPickupDate == todaysDate).ToList();
+            
             return View(customersInEmployeeZip);
         }
 
