@@ -21,5 +21,7 @@ namespace MyTrashCollector.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Zip { get; set; }
+
+        public string DesiredDayToView { get; set; }
     }
 }

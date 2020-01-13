@@ -193,6 +193,10 @@
     <Compile Include="Migrations\202001091944535_AddedExtraPickupDateMonthPropertyToCustomer.Designer.cs">
       <DependentUpon>202001091944535_AddedExtraPickupDateMonthPropertyToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001101551002_AddedDesiredDayToViewComployeeModel.cs" />
+    <Compile Include="Migrations\202001101551002_AddedDesiredDayToViewComployeeModel.Designer.cs">
+      <DependentUpon>202001101551002_AddedDesiredDayToViewComployeeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -268,6 +272,8 @@
     <Content Include="Views\Customer\PickupDateChanger.cshtml" />
     <Content Include="Views\Customer\SuspendDatesChanger.cshtml" />
     <Content Include="Views\Customer\BalanceBreakdown.cshtml" />
+    <Content Include="Views\Employee\EnterDesiredDay.cshtml" />
+    <Content Include="Views\Employee\ShowByDayOfWeek.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001091944535_AddedExtraPickupDateMonthPropertyToCustomer.resx">
       <DependentUpon>202001091944535_AddedExtraPickupDateMonthPropertyToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001101551002_AddedDesiredDayToViewComployeeModel.resx">
+      <DependentUpon>202001101551002_AddedDesiredDayToViewComployeeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -39,6 +39,44 @@ namespace MyTrashCollector.Controllers
             return View();
         }
 
+        public ActionResult EnterDesiredDay(int id)
+        {
+            Employee employee = new Employee();
+            var userId = User.Identity.GetUserId();
+            if (employee.ApplicationId == null)
+            {
+                employee = context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            }
+            return View(employee);
+        }
+
+        [HttpPost]
+        public ActionResult EnterDesiredDay(int id, Employee employee)
+        {
+            var employeeToBeUpdated = context.Employees.Where(e => e.ApplicationId == employee.ApplicationId).FirstOrDefault();
+            
+            
+            employeeToBeUpdated.DesiredDayToView = employee.DesiredDayToView;
+            context.SaveChanges();
+            return RedirectToAction("ShowByDayOfWeek"); //go to the ShowByDayOfWeek which will redirect to teh view that shows by selected day
+        }
+
+        //TODO - GET THIS SHIT DONE - Create View similar to CustomerController
+        public ActionResult ShowByDayOfWeek(Employee employee)
+        {
+            //make sure employee has employee data
+            //make sure employee is returned correctly -weve adjusted the day of the week to be searched now and this should return with the object
+            var userId = User.Identity.GetUserId();
+            if (employee.ApplicationId == null)
+            {
+                employee = context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            } 
+           
+            string selectedDay = employee.DesiredDayToView;
+            ViewBag.SearchedDay = selectedDay;
+           var customerListBySelectedDay = context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == selectedDay).ToList();
+            return View(customerListBySelectedDay);
+        }
         public ActionResult Confirm(int id)
         {
             var confirmedPickup = context.Customers.Where(c => c.Id == id).FirstOrDefault();
